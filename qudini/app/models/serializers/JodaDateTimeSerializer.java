@@ -14,7 +14,7 @@ import org.joda.time.DateTime;
 
 /**
  *
- * @author mikel
+ * @author michael papamichael
  */
 public class JodaDateTimeSerializer  extends JsonSerializer<DateTime>{
    

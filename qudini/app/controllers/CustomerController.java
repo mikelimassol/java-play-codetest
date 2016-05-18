@@ -5,17 +5,18 @@
  */
 package controllers;
 
+import Service.CustomerService;
 import com.fasterxml.jackson.databind.JsonNode;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import com.google.inject.Inject;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
-import models.Customer;
 import play.libs.Json;
 import static play.mvc.Controller.request;
 import play.mvc.Result;
 import static play.mvc.Results.ok;
+
+
+import views.html.*;
 
 /**
  *
@@ -23,27 +24,19 @@ import static play.mvc.Results.ok;
  */
 public class CustomerController {
     
+    @Inject
+    CustomerService customerService;
+    
+    /**
+     * Api entry point
+     * @return 
+     */
     public CompletionStage<Result> index() {
         
         JsonNode customerJson = request().body().asJson();
         
-        return CompletableFuture.supplyAsync(() -> sortCustomers(customerJson))
+        return CompletableFuture.supplyAsync(() -> customerService.sort(customerJson))
                 .thenApply(customerList -> ok(Json.toJson(customerList)));
         
     }
-    
-    public List<Customer> sortCustomers(JsonNode customerJson){
-
-        List<Customer> customerList = new ArrayList<>();
-        
-        customerJson.forEach(customerNode -> {
-            customerList.add(Json.fromJson(customerNode, Customer.class));
-        });
-       
-       customerList.sort(Comparator.comparing(e -> e.getDuetime()));
-      
-       return customerList;
-       
-    }
-    
 }

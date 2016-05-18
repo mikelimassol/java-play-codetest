@@ -1,0 +1,33 @@
+@(message: String)
+
+@main("Customers Helper Page") {
+@message
+
+<div  ng-app="qudini.CustomerApp" ng-controller="CustomerController as cusCtrl">
+
+    <ul class="customers">
+        <li ng-repeat="customerData in cusCtrl.customers">
+            <div>
+                <label>Id:</label><span>{{customerData.id}}</span>
+            </div>
+            <div>
+                <label>Name:</label><span>{{customerData.name}}</span>
+            </div>
+            <div>
+                <label>Due Time:</label><span>{{customerData.duetime}}</span>
+            </div>
+            <div>
+                <label>Join Time :</label><span>{{customerData.jointime}}</span>
+            </div>
+       </li>
+    </ul>
+
+</div>
+
+
+
+}
+
+
+
+
