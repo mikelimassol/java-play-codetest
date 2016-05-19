@@ -13,3 +13,14 @@ To test how quickly you can pick up a new project and follow requirements we ask
 Bonus points: 
 
 - An API is great, but how about adding some UI for easy upload of the file. 
+
+
+## added by michael papamichael
+
+API： 
+
+GET     /                   
+GET     /akka    
+            
+POST    /customers/sort      
+POST    /customers/akka/sort 
