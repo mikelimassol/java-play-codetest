@@ -7,7 +7,9 @@ package actor;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import models.Customer;
 import play.libs.Json;
 
@@ -22,13 +24,16 @@ public class CustomerActorProtocol {
         public final List<Customer> customerList;
 
         public SortCustomers(JsonNode customerJson) {
-            customerList = new ArrayList<>();
+            List<Customer> customerNotSortedList = new ArrayList<>();
 
             customerJson.forEach(customerNode -> {
-                customerList.add(Json.fromJson(customerNode, Customer.class));
+                customerNotSortedList.add(Json.fromJson(customerNode, Customer.class));
             });
-
-            customerList.sort((c1, c2) -> c1.getDueTime().compareTo(c2.getDueTime()));
+          
+            Comparator<Customer> byDueTime = (c1, c2) -> c1.getDueTime().compareTo(c2.getDueTime());
+            
+            customerList = customerNotSortedList.parallelStream().sorted(byDueTime) .collect(Collectors.toList());  
+            
         }
         
     }
