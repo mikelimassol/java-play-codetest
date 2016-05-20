@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import Service.CustomerService;
+import service.CustomerService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import java.util.concurrent.CompletableFuture;
@@ -14,6 +14,7 @@ import play.libs.Json;
 import static play.mvc.Controller.request;
 import play.mvc.Result;
 import static play.mvc.Results.ok;
+import service.CustomerService;
 
 /**
  *
