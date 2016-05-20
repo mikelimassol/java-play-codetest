@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.ImplementedBy;
 import java.util.List;
 import models.Customer;
+import service.impl.CustomerServiceImpl;
 
 /**
  *
