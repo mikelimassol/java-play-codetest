@@ -14,10 +14,10 @@
                 <label>Name:</label><span>{{customerData.name}}</span>
             </div>
             <div>
-                <label>Due Time:</label><span>{{customerData.duetime}}</span>
+                <label>Due Time:</label><span>{{customerData.duetime | date:'medium'}}</span>
             </div>
             <div>
-                <label>Join Time :</label><span>{{customerData.jointime}}</span>
+                <label>Join Time :</label><span>{{customerData.jointime | date:'medium'}}</span>
             </div>
        </li>
     </ul>
